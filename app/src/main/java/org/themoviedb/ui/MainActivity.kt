@@ -1,7 +1,8 @@
-package org.themoviedb
+package org.themoviedb.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import org.themoviedb.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

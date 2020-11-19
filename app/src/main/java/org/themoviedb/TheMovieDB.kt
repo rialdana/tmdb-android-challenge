@@ -7,15 +7,16 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.themoviedb.framework.di.appModule
 import org.themoviedb.framework.di.retrofitModule
+import org.themoviedb.framework.di.viewModelModule
 
 class TheMovieDB : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin{
+        startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@TheMovieDB)
-            modules(listOf(appModule, retrofitModule))
+            modules(listOf(appModule, retrofitModule, viewModelModule))
         }
     }
 }
