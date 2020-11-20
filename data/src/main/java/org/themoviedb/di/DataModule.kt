@@ -1,15 +1,13 @@
-package org.themoviedb.framework.di
+package org.themoviedb.di
 
 import org.koin.dsl.module
 import org.themobiedb.core.framework.data.MoviesDataSource
 import org.themobiedb.core.framework.data.MoviesRepository
-import org.themobiedb.core.interactors.GetPopularMovies
-import org.themobiedb.core.interactors.GetTopRatedMovies
-import org.themoviedb.framework.data.network.RemoteMoviesDataSource
-import org.themoviedb.framework.data.network.TmdbApiService
-import org.themoviedb.framework.data.repository.MoviesRepositoryImpl
+import org.themoviedb.network.RemoteMoviesDataSource
+import org.themoviedb.network.TmdbApiService
+import org.themoviedb.repository.MoviesRepositoryImpl
 
-val appModule = module {
+val dataModule = module {
 
     fun createRepository(remoteDataSource: MoviesDataSource): MoviesRepository {
         return MoviesRepositoryImpl(remoteDataSource)
@@ -21,8 +19,4 @@ val appModule = module {
 
     single { createDataSource(get()) }
     single { createRepository(get()) }
-
-
-    factory { GetPopularMovies(get()) }
-    factory { GetTopRatedMovies(get()) }
 }

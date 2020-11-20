@@ -1,9 +1,8 @@
-package org.themoviedb.framework.data.network
+package org.themoviedb.network
 
 import org.themobiedb.core.domain.movies.Movies
 import org.themobiedb.core.framework.Result
 import org.themobiedb.core.framework.data.MoviesDataSource
-import org.themoviedb.framework.utils.TMDB_API_KEY
 
 class RemoteMoviesDataSource(private val apiService: TmdbApiService) : MoviesDataSource {
 

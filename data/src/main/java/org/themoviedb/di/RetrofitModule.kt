@@ -1,15 +1,12 @@
-package org.themoviedb.framework.di
-
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
-import org.themoviedb.BuildConfig
-import org.themoviedb.framework.data.network.TmdbApiService
-import org.themoviedb.framework.utils.BASE_URL
-import org.themoviedb.framework.utils.CONNECT_TIMEOUT
-import org.themoviedb.framework.utils.READ_TIMEOUT
+import org.themoviedb.network.BASE_URL
+import org.themoviedb.network.CONNECT_TIMEOUT
+import org.themoviedb.network.READ_TIMEOUT
+import org.themoviedb.network.TmdbApiService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
@@ -27,9 +24,7 @@ val retrofitModule = module {
         val okhttp = OkHttpClient.Builder()
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS).apply {
-                if (BuildConfig.DEBUG) {
-                    addInterceptor(logging)
-                }
+                addInterceptor(logging)
             }
 
         return okhttp.build()

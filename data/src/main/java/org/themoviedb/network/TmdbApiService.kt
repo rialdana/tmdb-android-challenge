@@ -1,6 +1,6 @@
-package org.themoviedb.framework.data.network
+package org.themoviedb.network
 
-import org.themoviedb.framework.data.network.model.movie.MoviesResponse
+import org.themoviedb.network.model.movie.MoviesResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

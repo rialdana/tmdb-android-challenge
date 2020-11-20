@@ -78,8 +78,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
 
-    // Core module
-    implementation project(':core')
+    // modules
+    implementation project(':data')
+    implementation project(':domain')
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Testing

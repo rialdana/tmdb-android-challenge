@@ -1,4 +1,4 @@
-package org.themoviedb.framework.data.repository
+package org.themoviedb.repository
 
 import org.themobiedb.core.domain.movies.Movies
 import org.themobiedb.core.framework.Result

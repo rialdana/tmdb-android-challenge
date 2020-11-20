@@ -1,4 +1,4 @@
-package org.themoviedb.framework.data.network.mappers
+package org.themoviedb.network.mappers
 
 interface DomainMapper<T : Any> {
     fun mapToDomainModel(): T

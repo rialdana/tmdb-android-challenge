@@ -1,10 +1,10 @@
-package org.themoviedb.framework.data.network.model.movie
+package org.themoviedb.network.model.movie
 
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import org.themobiedb.core.domain.movies.Movie
-import org.themoviedb.framework.data.network.mappers.DomainMapper
+import org.themoviedb.network.mappers.DomainMapper
 
 @JsonClass(generateAdapter = true)
 data class Movie(

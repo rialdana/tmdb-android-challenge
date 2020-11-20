@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="The_Movie_DB.app" target="1.8" />
+      <module name="The_Movie_DB.data" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

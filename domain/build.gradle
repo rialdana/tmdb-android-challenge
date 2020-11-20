@@ -10,4 +10,7 @@ java {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Koin Dependency Injection
+    implementation "org.koin:koin-android:$koin_version"
 }

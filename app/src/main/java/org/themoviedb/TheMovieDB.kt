@@ -5,9 +5,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
-import org.themoviedb.framework.di.appModule
-import org.themoviedb.framework.di.retrofitModule
+import org.themobiedb.di.interactionModule
+import org.themoviedb.di.dataModule
 import org.themoviedb.framework.di.viewModelModule
+import retrofitModule
 
 class TheMovieDB : Application() {
     override fun onCreate() {
@@ -16,7 +17,7 @@ class TheMovieDB : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@TheMovieDB)
-            modules(listOf(appModule, retrofitModule, viewModelModule))
+            modules(listOf(retrofitModule, viewModelModule, dataModule, interactionModule))
         }
     }
 }
