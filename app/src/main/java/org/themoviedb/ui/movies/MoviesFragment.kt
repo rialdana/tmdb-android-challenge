@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.koin.android.ext.android.inject
 import org.themoviedb.databinding.FragmentMoviesBinding
+import org.themoviedb.ui.adapters.MoviesAdapter
 
 class MoviesFragment : Fragment() {
 
@@ -17,14 +18,23 @@ class MoviesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentMoviesBinding.inflate(inflater).apply {
             viewModel = this@MoviesFragment.viewModel
             lifecycleOwner = this@MoviesFragment
         }
 
+        binding.recyclerViewMovies.adapter = MoviesAdapter(moviesClickListener())
+
+        binding.recyclerViewPopularMovies.adapter = MoviesAdapter(moviesClickListener())
+
 
 
         return binding.root
+    }
+
+    private fun moviesClickListener() = MoviesAdapter.OnClickListener {
+
     }
 
 }

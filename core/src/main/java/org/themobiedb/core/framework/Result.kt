@@ -12,3 +12,13 @@ sealed class Result<out R> {
         }
     }
 }
+
+inline fun <T> Result<T>.onSuccess(action: (T) -> Unit): Result<T> {
+    if (this is Result.Success) action(data)
+    return this
+}
+
+inline fun <T> Result<T>.onFailure(action: (Exception) -> Unit): Result<T> {
+    if (this is Result.Error) action(exception)
+    return this
+}

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">The Movie DB</string>
+    <string name="the_movie_db">The Movie DB</string>
+    <string name="top_rated_movies">Top rated movies</string>
+    <string name="search_button">Search button</string>
+    <string name="popular_movies">Popular movies</string>
 </resources>

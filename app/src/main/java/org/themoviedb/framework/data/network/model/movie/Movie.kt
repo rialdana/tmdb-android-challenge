@@ -3,6 +3,8 @@ package org.themoviedb.framework.data.network.model.movie
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import org.themobiedb.core.domain.movies.Movie
+import org.themoviedb.framework.data.network.mappers.DomainMapper
 
 @JsonClass(generateAdapter = true)
 data class Movie(
@@ -28,4 +30,22 @@ data class Movie(
     val voteAverage: Double,
     @Json(name = "vote_count")
     val voteCount: Int
-)
+) : DomainMapper<Movie> {
+    override fun mapToDomainModel() = Movie(
+        adult,
+        backdropPath,
+        genreIds,
+        id,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount
+    )
+
+}
