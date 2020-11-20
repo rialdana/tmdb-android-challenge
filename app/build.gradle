@@ -78,6 +78,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
 
+    // lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+
     // modules
     implementation project(':data')
     implementation project(':domain')
