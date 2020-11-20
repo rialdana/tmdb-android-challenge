@@ -4,6 +4,7 @@ import org.themobiedb.model.movies.Movies
 import org.themobiedb.data.Result
 import org.themobiedb.data.datasource.MoviesDataSource
 import org.themobiedb.data.repository.MoviesRepository
+import org.themobiedb.model.moviedetail.MovieDetail
 
 class MoviesRepositoryImpl(private val remoteDataSource: MoviesDataSource) : MoviesRepository {
 
@@ -13,6 +14,10 @@ class MoviesRepositoryImpl(private val remoteDataSource: MoviesDataSource) : Mov
 
     override suspend fun fetchTopRatedMovies(): Result<Movies> {
         return remoteDataSource.fetchTopRatedMovies()
+    }
+
+    override suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail> {
+        return remoteDataSource.fetchMovieDetail(movieId)
     }
 
 }
