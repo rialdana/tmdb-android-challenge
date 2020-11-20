@@ -3,7 +3,7 @@ package org.themoviedb.network.model.movie
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import org.themobiedb.core.domain.movies.Movies
+import org.themobiedb.model.movies.Movies
 import org.themoviedb.network.mappers.DomainMapper
 
 @JsonClass(generateAdapter = true)

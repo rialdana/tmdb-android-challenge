@@ -1,4 +1,4 @@
-package org.themobiedb.core.framework
+package org.themobiedb.data
 
 sealed class Result<out R> {
 

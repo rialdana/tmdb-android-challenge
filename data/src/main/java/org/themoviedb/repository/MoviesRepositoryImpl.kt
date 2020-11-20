@@ -1,9 +1,9 @@
 package org.themoviedb.repository
 
-import org.themobiedb.core.domain.movies.Movies
-import org.themobiedb.core.framework.Result
-import org.themobiedb.core.framework.data.MoviesDataSource
-import org.themobiedb.core.framework.data.MoviesRepository
+import org.themobiedb.model.movies.Movies
+import org.themobiedb.data.Result
+import org.themobiedb.data.datasource.MoviesDataSource
+import org.themobiedb.data.repository.MoviesRepository
 
 class MoviesRepositoryImpl(private val remoteDataSource: MoviesDataSource) : MoviesRepository {
 

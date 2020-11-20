@@ -1,8 +1,8 @@
 package org.themoviedb.di
 
 import org.koin.dsl.module
-import org.themobiedb.core.framework.data.MoviesDataSource
-import org.themobiedb.core.framework.data.MoviesRepository
+import org.themobiedb.data.datasource.MoviesDataSource
+import org.themobiedb.data.repository.MoviesRepository
 import org.themoviedb.network.RemoteMoviesDataSource
 import org.themoviedb.network.TmdbApiService
 import org.themoviedb.repository.MoviesRepositoryImpl

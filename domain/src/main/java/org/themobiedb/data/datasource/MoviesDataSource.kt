@@ -1,7 +1,7 @@
-package org.themobiedb.core.framework.data
+package org.themobiedb.data.datasource
 
-import org.themobiedb.core.domain.movies.Movies
-import org.themobiedb.core.framework.Result
+import org.themobiedb.data.Result
+import org.themobiedb.model.movies.Movies
 
 interface MoviesDataSource {
 

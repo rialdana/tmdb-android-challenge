@@ -1,4 +1,4 @@
-package org.themobiedb.core.domain.movies
+package org.themobiedb.model.movies
 
 data class Movie(
     val adult: Boolean,

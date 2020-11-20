@@ -1,8 +1,8 @@
 package org.themobiedb.di
 
 import org.koin.dsl.module
-import org.themobiedb.core.interactors.GetPopularMovies
-import org.themobiedb.core.interactors.GetTopRatedMovies
+import org.themobiedb.interactors.GetPopularMovies
+import org.themobiedb.interactors.GetTopRatedMovies
 
 val interactionModule = module {
     factory { GetPopularMovies(get()) }

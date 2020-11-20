@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="org.themobiedb.core.domain.movies.Movie" />
+            type="org.themobiedb.model.movies.Movie" />
     </data>
 
     <androidx.cardview.widget.CardView

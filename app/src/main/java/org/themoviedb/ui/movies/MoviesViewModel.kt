@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.themobiedb.core.domain.movies.Movies
-import org.themobiedb.core.framework.onFailure
-import org.themobiedb.core.framework.onSuccess
-import org.themobiedb.core.interactors.GetPopularMovies
-import org.themobiedb.core.interactors.GetTopRatedMovies
+import org.themobiedb.model.movies.Movies
+import org.themobiedb.data.onFailure
+import org.themobiedb.data.onSuccess
+import org.themobiedb.interactors.GetPopularMovies
+import org.themobiedb.interactors.GetTopRatedMovies
 
 class MoviesViewModel(
     private val getTopRatedMovies: GetTopRatedMovies,

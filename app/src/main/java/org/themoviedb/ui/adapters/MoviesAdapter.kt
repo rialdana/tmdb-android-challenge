@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.themobiedb.core.domain.movies.Movie
+import org.themobiedb.model.movies.Movie
 import org.themoviedb.databinding.ItemMovieBinding
 import org.themoviedb.framework.utils.GenericAdapter
 
