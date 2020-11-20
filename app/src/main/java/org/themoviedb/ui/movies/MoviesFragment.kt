@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import org.koin.android.ext.android.inject
 import org.themoviedb.databinding.FragmentMoviesBinding
 import org.themoviedb.ui.adapters.MoviesAdapter
@@ -34,7 +35,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun moviesClickListener() = MoviesAdapter.OnClickListener {
-
+        this.findNavController().navigate(MoviesFragmentDirections.openMovieDetailAction(it.id))
     }
 
 }

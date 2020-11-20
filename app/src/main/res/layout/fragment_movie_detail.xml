@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.themoviedb.ui.moviedetail.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.moviedetail.MovieDetailFragment">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_top_movies"
+            android:layout_width="@dimen/loading_animation_size"
+            android:layout_height="@dimen/loading_animation_size"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_animation"
+            app:showOnLoading="@{viewModel.apiCallStatusOne}" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_top_movies_error"
+            android:layout_width="@dimen/loading_animation_size"
+            android:layout_height="@dimen/loading_animation_size"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/error_animation"
+            app:showOnError="@{viewModel.apiCallStatusOne}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
