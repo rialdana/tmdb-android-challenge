@@ -69,3 +69,14 @@ fun showOnError(lottie: LottieAnimationView, apiCallStatus: ApiCallStatus?) {
         }
     }
 }
+
+@BindingAdapter("app:emptyStateListSize", "app:emptyStateApiStatus")
+fun showEmptyState(view: View, listSize: Int?, apiCallStatus: ApiCallStatus?) {
+    if (listSize != null && apiCallStatus != null && apiCallStatus == ApiCallStatus.SUCCESS) {
+        view.visibility = if (listSize == 0) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+}

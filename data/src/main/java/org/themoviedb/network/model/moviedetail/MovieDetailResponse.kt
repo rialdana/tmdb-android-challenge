@@ -10,23 +10,23 @@ import org.themoviedb.network.mappers.DomainMapper
 data class MovieDetailResponse(
     val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @Json(name = "belongs_to_collection")
-    val belongsToCollection: BelongsToCollection,
+    val belongsToCollection: BelongsToCollection?,
     val budget: Int,
     val genres: List<Genre>,
-    val homepage: String,
+    val homepage: String?,
     val id: Int,
     @Json(name = "imdb_id")
-    val imdbId: String,
+    val imdbId: String?,
     @Json(name = "original_language")
     val originalLanguage: String,
     @Json(name = "original_title")
     val originalTitle: String,
-    val overview: String,
+    val overview: String?,
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "production_companies")
     val productionCompanies: List<ProductionCompany>,
     @Json(name = "production_countries")
@@ -34,11 +34,11 @@ data class MovieDetailResponse(
     @Json(name = "release_date")
     val releaseDate: String,
     val revenue: Int,
-    val runtime: Int,
+    val runtime: Int?,
     @Json(name = "spoken_languages")
     val spokenLanguages: List<SpokenLanguage>,
     val status: String,
-    val tagline: String,
+    val tagline: String?,
     val title: String,
     val video: Boolean,
     @Json(name = "vote_average")
@@ -48,26 +48,27 @@ data class MovieDetailResponse(
 ) : DomainMapper<MovieDetail> {
     override fun mapToDomainModel() = MovieDetail(
         adult,
-        backdropPath,
-        belongsToCollection.mapToDomainModel(),
+        backdropPath ?: "",
+        belongsToCollection?.mapToDomainModel()
+            ?: org.themobiedb.model.moviedetail.BelongsToCollection("", 0, "", ""),
         budget,
         genres.map { it.mapToDomainModel() },
-        homepage,
+        homepage ?: "",
         id,
-        imdbId,
+        imdbId ?: "",
         originalLanguage,
         originalTitle,
-        overview,
+        overview ?: "",
         popularity,
-        posterPath,
+        posterPath ?: "",
         productionCompanies.map { it.mapToDomainModel() },
         productionCountries,
         releaseDate,
         revenue,
-        runtime,
+        runtime ?: 0,
         spokenLanguages.map { it.mapToDomainModel() },
         status,
-        tagline,
+        tagline ?: "",
         title,
         video,
         voteAverage,

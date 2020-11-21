@@ -5,46 +5,45 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.themobiedb.model.movies.Movie
-import org.themoviedb.databinding.ItemMovieBinding
+import org.themobiedb.model.moviedetail.ProductionCompany
+import org.themoviedb.databinding.ItemCompanyBinding
 import org.themoviedb.framework.utils.GenericAdapter
 
-class MoviesAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<Movie, MoviesAdapter.CharactersViewHolder>(DiffCallback),
-    GenericAdapter<List<Movie>> {
+class CompanyAdapter() :
+    ListAdapter<ProductionCompany, CompanyAdapter.CharactersViewHolder>(DiffCallback),
+    GenericAdapter<List<ProductionCompany>> {
 
-    companion object DiffCallback : DiffUtil.ItemCallback<Movie>() {
+    /**
+     * DiffCallback algorithm to check when the item of the view changed
+     */
+    companion object DiffCallback : DiffUtil.ItemCallback<ProductionCompany>() {
         override fun areItemsTheSame(
-            oldItem: Movie,
-            newItem: Movie
+            oldItem: ProductionCompany,
+            newItem: ProductionCompany
         ): Boolean {
             return oldItem === newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: Movie,
-            newItem: Movie
+            oldItem: ProductionCompany,
+            newItem: ProductionCompany
         ): Boolean {
             return oldItem.id == newItem.id
         }
     }
 
-    class CharactersViewHolder(private val binding: ItemMovieBinding) :
+    class CharactersViewHolder(private val binding: ItemCompanyBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie) {
-            binding.movie = movie
+        fun bind(company: ProductionCompany) {
+            binding.company = company
             binding.executePendingBindings()
         }
     }
 
-    class OnClickListener(private val clickListener: (movie: Movie) -> Unit) {
-        fun onCharacterClicked(movie: Movie) = clickListener(movie)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
         return CharactersViewHolder(
-            ItemMovieBinding.inflate(
+            ItemCompanyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -53,16 +52,11 @@ class MoviesAdapter(private val onClickListener: OnClickListener) :
     }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
-        val movie = getItem(position)
-
-        holder.itemView.setOnClickListener {
-            onClickListener.onCharacterClicked(movie)
-        }
-
-        holder.bind(movie)
+        val company = getItem(position)
+        holder.bind(company)
     }
 
-    override fun setData(data: List<Movie>) {
+    override fun setData(data: List<ProductionCompany>) {
         submitList(data)
     }
 }

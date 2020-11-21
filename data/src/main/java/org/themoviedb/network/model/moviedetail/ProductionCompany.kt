@@ -10,11 +10,11 @@ import org.themoviedb.network.mappers.DomainMapper
 data class ProductionCompany(
     val id: Int,
     @Json(name = "logo_path")
-    val logoPath: String,
+    val logoPath: String?,
     val name: String,
     @Json(name = "origin_country")
     val originCountry: String
 ) : DomainMapper<ProductionCompany> {
-    override fun mapToDomainModel() = ProductionCompany(id, logoPath, name, originCountry)
+    override fun mapToDomainModel() = ProductionCompany(id, logoPath ?: "", name, originCountry)
 
 }
