@@ -1,5 +1,6 @@
 package org.themoviedb.ui.searchmovie
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -22,7 +23,8 @@ class SearchMovieViewModel(private val searchMovies: SearchMovies, val query: St
         getMovieResults()
     }
 
-    private fun getMovieResults() {
+    @VisibleForTesting
+    fun getMovieResults() {
         viewModelScope.launch {
             apiCallOne.value = ApiCallStatus.LOADING
 
