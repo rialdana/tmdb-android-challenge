@@ -13,6 +13,9 @@
         <action
             android:id="@+id/openMovieDetailAction"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/searchMovieAction"
+            app:destination="@id/searchMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -22,5 +25,17 @@
         <argument
             android:name="movieId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="org.themoviedb.ui.searchmovie.SearchMovieFragment"
+        android:label="fragment_search_movie"
+        tools:layout="@layout/fragment_search_movie" >
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <action
+            android:id="@+id/openMovieDetailFromSearchAction"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
 </navigation>

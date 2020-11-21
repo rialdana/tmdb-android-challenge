@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.themoviedb.ui.searchmovie.SearchMovieViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.searchmovie.SearchMovieFragment">
+
+        <TextView
+            android:id="@+id/text_results_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/results_for"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_search_query"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@{viewModel.query}"
+            android:textColor="@color/secondaryColor"
+            android:textSize="@dimen/text_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/text_results_label"
+            app:layout_constraintTop_toBottomOf="@id/text_results_label"
+            tools:text="Joker" />
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_search_query" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_loading_search"
+            android:layout_width="@dimen/loading_animation_size"
+            android:layout_height="@dimen/loading_animation_size"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_animation"
+            app:showOnLoading="@{viewModel.apiCallStatusOne}" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_search_error"
+            android:layout_width="@dimen/loading_animation_size"
+            android:layout_height="@dimen/loading_animation_size"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/error_animation"
+            app:showOnError="@{viewModel.apiCallStatusOne}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_search_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_divider"
+            app:setList="@{viewModel.movies.results}"
+            tools:listitem="@layout/item_search_movie" />
+
+        <TextView
+            android:id="@+id/text_empty_state"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sorry_we_didn_t_find_any_movie"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:emptyStateApiStatus="@{viewModel.apiCallStatusOne}"
+            app:emptyStateListSize="@{viewModel.movies.results.size()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/text_view_search_query"
+            app:layout_constraintStart_toStartOf="@id/text_view_search_query"
+            app:layout_constraintTop_toBottomOf="@id/view_divider" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
