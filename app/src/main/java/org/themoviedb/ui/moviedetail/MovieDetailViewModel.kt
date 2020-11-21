@@ -1,6 +1,5 @@
 package org.themoviedb.ui.moviedetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

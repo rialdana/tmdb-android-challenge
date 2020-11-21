@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import org.koin.android.ext.android.bind
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import org.themoviedb.databinding.FragmentMovieDetailBinding
+import org.themoviedb.ui.adapters.CompanyAdapter
+import org.themoviedb.ui.adapters.GenreAdapter
 
 class MovieDetailFragment : Fragment() {
 
@@ -24,6 +27,9 @@ class MovieDetailFragment : Fragment() {
             viewModel = this@MovieDetailFragment.viewModel
             lifecycleOwner = this@MovieDetailFragment
         }
+
+        binding.recyclerViewMovieGenres.adapter = GenreAdapter()
+        binding.recyclerViewMovieProductionCompanies.adapter = CompanyAdapter()
 
         return binding.root
     }

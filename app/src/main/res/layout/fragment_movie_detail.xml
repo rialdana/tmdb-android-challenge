@@ -15,6 +15,136 @@
         android:layout_height="match_parent"
         tools:context=".ui.moviedetail.MovieDetailFragment">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_view_movie_poster"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/movie_poster"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:loadImage="@{viewModel.movieDetail.posterPath}"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/text_view_movie_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="@{viewModel.movieDetail.title}"
+                    android:textColor="@color/normalTextColor"
+                    android:textSize="@dimen/text_subtitle_size"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view_movie_poster"
+                    tools:text="Joker" />
+
+                <TextView
+                    android:id="@+id/text_view_movie_release_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{viewModel.movieDetail.overview}"
+                    android:textColor="@color/normalTextColor"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_movie_title"
+                    app:layout_constraintStart_toStartOf="@id/text_view_movie_title"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_movie_title"
+                    tools:text="This is a movie about a sad clown that had some mental issues" />
+
+                <TextView
+                    android:id="@+id/text_view_genres_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/genres"
+                    android:textColor="@color/normalTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_movie_release_date"
+                    app:layout_constraintStart_toStartOf="@id/text_view_movie_release_date"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_movie_release_date"
+                    app:showOnSuccess="@{viewModel.apiCallStatusOne}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_movie_genres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_genres_title"
+                    app:setList="@{viewModel.movieDetail.genres}"
+                    tools:listitem="@layout/item_genre" />
+
+                <TextView
+                    android:id="@+id/text_view_genres_empty_state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_registered_genres_for_movie"
+                    android:textAlignment="center"
+                    app:emptyStateApiStatus="@{viewModel.apiCallStatusOne}"
+                    app:emptyStateListSize="@{viewModel.movieDetail.genres.size()}"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_genres_title"
+                    app:layout_constraintStart_toStartOf="@id/text_view_genres_title"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_view_movie_genres" />
+
+                <TextView
+                    android:id="@+id/text_view_companies_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/production_companies"
+                    android:textColor="@color/normalTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_movie_release_date"
+                    app:layout_constraintStart_toStartOf="@id/text_view_movie_release_date"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_genres_empty_state"
+                    app:showOnSuccess="@{viewModel.apiCallStatusOne}" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_movie_production_companies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_companies_title"
+                    app:setList="@{viewModel.movieDetail.productionCompanies}"
+                    tools:listitem="@layout/item_company" />
+
+                <TextView
+                    android:id="@+id/text_view_companies_empty_state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:text="@string/no_company_information"
+                    android:textAlignment="center"
+                    app:emptyStateApiStatus="@{viewModel.apiCallStatusOne}"
+                    app:emptyStateListSize="@{viewModel.movieDetail.productionCompanies.size()}"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_genres_title"
+                    app:layout_constraintStart_toStartOf="@id/text_view_genres_title"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_view_movie_production_companies" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_top_movies"
             android:layout_width="@dimen/loading_animation_size"

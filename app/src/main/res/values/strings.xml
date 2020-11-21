@@ -4,4 +4,10 @@
     <string name="top_rated_movies">Top rated movies</string>
     <string name="search_button">Search button</string>
     <string name="popular_movies">Popular movies</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="genres">Genres</string>
+    <string name="no_registered_genres_for_movie">This movie doesn\'t have registered genres</string>
+    <string name="production_companies">Production companies</string>
+    <string name="no_company_information">Sorry, we don\'t know which company financed this movie</string>
+    <string name="company_logo">Company logo</string>
 </resources>
