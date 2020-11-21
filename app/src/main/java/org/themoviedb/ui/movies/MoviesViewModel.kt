@@ -1,5 +1,6 @@
 package org.themoviedb.ui.movies
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -30,7 +31,8 @@ class MoviesViewModel(
         loadPopularMovies()
     }
 
-    private fun loadTopRatedMovies() {
+    @VisibleForTesting
+    fun loadTopRatedMovies() {
         viewModelScope.launch {
             apiCallOne.value = ApiCallStatus.LOADING
 
@@ -45,7 +47,8 @@ class MoviesViewModel(
         }
     }
 
-    private fun loadPopularMovies() {
+    @VisibleForTesting
+    fun loadPopularMovies() {
         viewModelScope.launch {
             apiCallTwo.value = ApiCallStatus.LOADING
 

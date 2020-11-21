@@ -1,5 +1,6 @@
 package org.themoviedb.ui.moviedetail
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -22,7 +23,8 @@ class MovieDetailViewModel(private val getMovieDetail: GetMovieDetail, private v
         fetchMovieDetail()
     }
 
-    private fun fetchMovieDetail() {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun fetchMovieDetail() {
         viewModelScope.launch {
             apiCallOne.value = ApiCallStatus.LOADING
 
