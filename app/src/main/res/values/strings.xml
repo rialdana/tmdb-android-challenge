@@ -10,4 +10,6 @@
     <string name="production_companies">Production companies</string>
     <string name="no_company_information">Sorry, we don\'t know which company financed this movie</string>
     <string name="company_logo">Company logo</string>
+    <string name="what_would_you_like_to_search">What would you like to search?</string>
+    <string name="type_a_movie_name">Type a movie name</string>
 </resources>
