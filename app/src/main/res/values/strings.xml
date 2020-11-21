@@ -12,4 +12,7 @@
     <string name="company_logo">Company logo</string>
     <string name="what_would_you_like_to_search">What would you like to search?</string>
     <string name="type_a_movie_name">Type a movie name</string>
+    <string name="results_for">Results for:</string>
+    <string name="please_complete_field">Please enter a text to search</string>
+    <string name="sorry_we_didn_t_find_any_movie">Sorry, we didn\'t find any movie</string>
 </resources>

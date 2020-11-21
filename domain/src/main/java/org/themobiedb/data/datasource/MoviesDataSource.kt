@@ -11,4 +11,6 @@ interface MoviesDataSource {
     suspend fun fetchTopRatedMovies(): Result<Movies>
 
     suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail>
+
+    suspend fun searchMovie(query: String): Result<Movies>
 }

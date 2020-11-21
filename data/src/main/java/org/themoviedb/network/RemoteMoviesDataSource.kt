@@ -37,4 +37,13 @@ class RemoteMoviesDataSource(private val apiService: TmdbApiService) : MoviesDat
         }
     }
 
+    override suspend fun searchMovie(query: String): Result<Movies> {
+        return try {
+            val movies = apiService.searchMovies(TMDB_API_KEY, query).mapToDomainModel()
+            Result.Success(movies)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
 }

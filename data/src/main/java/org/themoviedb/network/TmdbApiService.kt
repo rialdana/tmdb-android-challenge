@@ -17,10 +17,17 @@ interface TmdbApiService {
     suspend fun fetchTopRatedMovies(@Query("api_key") apiKey: String): MoviesResponse
 
     @Headers("Content-Type: application/json", "Accept: application/json")
-    @GET("movie/{movie_id}}")
+    @GET("movie/{movie_id}")
     suspend fun fetchMovieDetail(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String
     ): MovieDetailResponse
+
+    @Headers("Content-Type: application/json", "Accept: application/json")
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("api_key") apiKey: String,
+        @Query("query") query: String
+    ): MoviesResponse
 
 }

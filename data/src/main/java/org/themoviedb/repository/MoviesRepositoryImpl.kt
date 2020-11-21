@@ -20,4 +20,8 @@ class MoviesRepositoryImpl(private val remoteDataSource: MoviesDataSource) : Mov
         return remoteDataSource.fetchMovieDetail(movieId)
     }
 
+    override suspend fun searchMovie(query: String): Result<Movies> {
+        return remoteDataSource.searchMovie(query)
+    }
+
 }

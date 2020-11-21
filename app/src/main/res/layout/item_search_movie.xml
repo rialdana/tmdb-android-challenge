@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="org.themobiedb.model.movies.Movie" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:foreground="@drawable/ripple_secondary"
+        app:cardBackgroundColor="@color/primaryColor"
+        app:cardCornerRadius="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view_search_movie_poster"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{movie.posterPath}"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/text_view_search_movie_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@{movie.title}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_subtitle_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_view_search_movie_poster"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Joker" />
+
+            <TextView
+                android:id="@+id/text_view_search_movie_overview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{movie.overview}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/image_view_search_movie_poster"
+                app:layout_constraintEnd_toEndOf="@id/text_view_search_movie_title"
+                app:layout_constraintStart_toStartOf="@id/text_view_search_movie_title"
+                app:layout_constraintTop_toBottomOf="@id/text_view_search_movie_title"
+                tools:text="This is a movie about a sad clown" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
