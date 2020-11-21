@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/openMovieDetailAction"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/searchMovieAction"
-            app:destination="@id/searchMovieFragment" />
+            app:destination="@id/searchMovieFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -30,12 +38,16 @@
         android:id="@+id/searchMovieFragment"
         android:name="org.themoviedb.ui.searchmovie.SearchMovieFragment"
         android:label="fragment_search_movie"
-        tools:layout="@layout/fragment_search_movie" >
+        tools:layout="@layout/fragment_search_movie">
         <argument
             android:name="query"
             app:argType="string" />
         <action
             android:id="@+id/openMovieDetailFromSearchAction"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>
