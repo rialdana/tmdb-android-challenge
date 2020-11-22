@@ -2,10 +2,8 @@ package org.themoviedb.app.movies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert
-import org.hamcrest.core.Is
 import org.hamcrest.core.Is.`is`
 import org.junit.Before
 import org.junit.Rule
