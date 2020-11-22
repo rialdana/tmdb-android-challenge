@@ -19,8 +19,8 @@ class MoviesViewModel(
     private val getPopularMovies: GetPopularMovies
 ) : BaseViewModel() {
 
-    private val _topRatedMovies = MutableLiveData<Movies>()
-    val topRatedMovies: LiveData<Movies>
+    private val _topRatedMovies = MutableLiveData<List<Movie>>()
+    val topRatedMovies: LiveData<List<Movie>>
         get() = _topRatedMovies
 
     private val _popularMovies = MutableLiveData<List<Movie>>()

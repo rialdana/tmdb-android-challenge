@@ -8,7 +8,7 @@ interface MoviesDataSource {
 
     suspend fun fetchPopularMovies(): Movies
 
-    suspend fun fetchTopRatedMovies(): Result<Movies>
+    suspend fun fetchTopRatedMovies(): Movies
 
     suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail>
 

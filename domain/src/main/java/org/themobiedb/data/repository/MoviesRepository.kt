@@ -9,7 +9,7 @@ interface MoviesRepository {
 
     suspend fun fetchPopularMovies(): Result<List<Movie>>
 
-    suspend fun fetchTopRatedMovies(): Result<Movies>
+    suspend fun fetchTopRatedMovies(): Result<List<Movie>>
 
     suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail>
 

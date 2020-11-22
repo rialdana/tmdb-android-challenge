@@ -44,8 +44,32 @@ class MoviesRepositoryImpl(
         }
     }
 
-    override suspend fun fetchTopRatedMovies(): Result<Movies> {
-        return remoteDataSource.fetchTopRatedMovies()
+    override suspend fun fetchTopRatedMovies(): Result<List<Movie>> = withContext(Dispatchers.IO) {
+        try {
+            val movies = remoteDataSource.fetchTopRatedMovies()
+
+            movieDao.insertMovies(movies.results.map {
+                MovieEntity(
+                    it.id,
+                    it.title,
+                    it.overview,
+                    it.posterPath,
+                    MovieEntity.TOP_RATED_MOVIE
+                )
+            })
+
+            Result.Success(
+                movieDao.getMovies(MovieEntity.TOP_RATED_MOVIE).map { it.mapToDomainModel() }
+            )
+        } catch (e: Exception) {
+            val movies = movieDao.getMovies(MovieEntity.TOP_RATED_MOVIE)
+
+            if (movies.isEmpty()) {
+                Result.Error(e)
+            } else {
+                Result.Success(movies.map { it.mapToDomainModel() })
+            }
+        }
     }
 
     override suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail> {
