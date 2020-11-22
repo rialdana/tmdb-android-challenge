@@ -23,7 +23,7 @@ data class Movie(
     @Json(name = "poster_path")
     val posterPath: String?,
     @Json(name = "release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
     val title: String,
     val video: Boolean,
     @Json(name = "vote_average")
@@ -32,20 +32,7 @@ data class Movie(
     val voteCount: Int
 ) : DomainMapper<Movie> {
     override fun mapToDomainModel() = Movie(
-        adult,
-        backdropPath ?: "",
-        genreIds,
-        id,
-        originalLanguage,
-        originalTitle,
-        overview,
-        popularity,
-        posterPath ?: "",
-        releaseDate,
-        title,
-        video,
-        voteAverage,
-        voteCount
+        id, overview, posterPath ?: "", title
     )
 
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'kotlin-kapt'
 }
 
 java {
@@ -25,6 +26,11 @@ dependencies {
 
     // Koin Dependency Injection
     implementation "org.koin:koin-android:$koin_version"
+
+    // Room components
+    implementation "androidx.room:room-runtime:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
 
     implementation project(':domain')
 }

@@ -7,6 +7,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.themobiedb.di.interactionModule
 import org.themoviedb.di.dataModule
+import org.themoviedb.framework.di.databaseModule
 import org.themoviedb.framework.di.viewModelModule
 import retrofitModule
 
@@ -17,7 +18,7 @@ class TheMovieDB : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@TheMovieDB)
-            modules(listOf(retrofitModule, viewModelModule, dataModule, interactionModule))
+            modules(listOf(retrofitModule, viewModelModule, dataModule, interactionModule, databaseModule))
         }
     }
 }
