@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="org.themoviedb.ui.movies.MoviesFragment"
-        android:label="fragment_movies"
+        android:label="The Movie DB"
         tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/openMovieDetailAction"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="org.themoviedb.ui.moviedetail.MovieDetailFragment"
-        android:label="fragment_movie_detail"
+        android:label="Movie detail"
         tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="movieId"
@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/searchMovieFragment"
         android:name="org.themoviedb.ui.searchmovie.SearchMovieFragment"
-        android:label="fragment_search_movie"
+        android:label="Search"
         tools:layout="@layout/fragment_search_movie">
         <argument
             android:name="query"

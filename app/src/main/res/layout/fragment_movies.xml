@@ -19,28 +19,6 @@
             android:layout_height="match_parent"
             tools:context=".ui.movies.MoviesFragment">
 
-            <TextView
-                android:id="@+id/text_view_tmdb_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@string/the_movie_db"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/text_title_size"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_view_search_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/what_would_you_like_to_search"
-                app:layout_constraintEnd_toEndOf="@id/card_view_search_bar"
-                app:layout_constraintStart_toStartOf="@id/text_view_tmdb_title"
-                app:layout_constraintTop_toBottomOf="@id/text_view_tmdb_title" />
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_search_bar"
                 android:layout_width="0dp"
@@ -52,7 +30,7 @@
                 app:cardElevation="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_search_label">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -101,7 +79,7 @@
                 android:textColor="@color/normalTextColor"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/text_view_tmdb_title"
+                app:layout_constraintStart_toStartOf="@id/card_view_search_bar"
                 app:layout_constraintTop_toBottomOf="@id/card_view_search_bar" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -153,7 +131,7 @@
                 android:textColor="@color/normalTextColor"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/text_view_tmdb_title"
+                app:layout_constraintStart_toStartOf="@id/card_view_search_bar"
                 app:layout_constraintTop_toBottomOf="@id/recycler_view_movies" />
 
             <androidx.recyclerview.widget.RecyclerView
