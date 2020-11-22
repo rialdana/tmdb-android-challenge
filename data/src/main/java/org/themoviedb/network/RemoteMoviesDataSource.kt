@@ -7,24 +7,12 @@ import org.themobiedb.model.moviedetail.MovieDetail
 
 class RemoteMoviesDataSource(private val apiService: TmdbApiService) : MoviesDataSource {
 
-    override suspend fun fetchPopularMovies(): Result<Movies> {
-        return try {
-            val movies = apiService.fetchPopularMovies(TMDB_API_KEY).mapToDomainModel()
-
-            Result.Success(movies)
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
+    override suspend fun fetchPopularMovies(): Movies {
+        return apiService.fetchPopularMovies(TMDB_API_KEY).mapToDomainModel()
     }
 
-    override suspend fun fetchTopRatedMovies(): Result<Movies> {
-        return try {
-            val movies = apiService.fetchTopRatedMovies(TMDB_API_KEY).mapToDomainModel()
-
-            Result.Success(movies)
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
+    override suspend fun fetchTopRatedMovies(): Movies {
+        return apiService.fetchTopRatedMovies(TMDB_API_KEY).mapToDomainModel()
     }
 
     override suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail> {

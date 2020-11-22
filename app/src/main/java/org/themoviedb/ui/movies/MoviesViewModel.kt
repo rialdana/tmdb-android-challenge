@@ -9,6 +9,7 @@ import org.themobiedb.data.onFailure
 import org.themobiedb.data.onSuccess
 import org.themobiedb.interactors.GetPopularMovies
 import org.themobiedb.interactors.GetTopRatedMovies
+import org.themobiedb.model.movies.Movie
 import org.themobiedb.model.movies.Movies
 import org.themoviedb.framework.utils.ApiCallStatus
 import org.themoviedb.ui.base.BaseViewModel
@@ -18,12 +19,12 @@ class MoviesViewModel(
     private val getPopularMovies: GetPopularMovies
 ) : BaseViewModel() {
 
-    private val _topRatedMovies = MutableLiveData<Movies>()
-    val topRatedMovies: LiveData<Movies>
+    private val _topRatedMovies = MutableLiveData<List<Movie>>()
+    val topRatedMovies: LiveData<List<Movie>>
         get() = _topRatedMovies
 
-    private val _popularMovies = MutableLiveData<Movies>()
-    val popularMovies: LiveData<Movies>
+    private val _popularMovies = MutableLiveData<List<Movie>>()
+    val popularMovies: LiveData<List<Movie>>
         get() = _popularMovies
 
     init {

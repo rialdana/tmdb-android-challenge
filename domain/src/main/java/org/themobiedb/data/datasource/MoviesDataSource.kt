@@ -6,9 +6,9 @@ import org.themobiedb.model.movies.Movies
 
 interface MoviesDataSource {
 
-    suspend fun fetchPopularMovies(): Result<Movies>
+    suspend fun fetchPopularMovies(): Movies
 
-    suspend fun fetchTopRatedMovies(): Result<Movies>
+    suspend fun fetchTopRatedMovies(): Movies
 
     suspend fun fetchMovieDetail(movieId: Int): Result<MovieDetail>
 
