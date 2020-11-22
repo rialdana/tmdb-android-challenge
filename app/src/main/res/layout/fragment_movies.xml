@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.themoviedb.ui.movies.MoviesViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.movies.MoviesFragment">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_search_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/primaryColor"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edit_text_search"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@null"
+                        android:hint="@string/type_a_movie_name"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:textColor="@color/white"
+                        android:textColorHint="#80FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/image_button_search"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/image_button_search"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/ic_search"
+                        android:backgroundTint="@color/secondaryColor"
+                        android:contentDescription="@string/search_button"
+                        android:foreground="@drawable/ripple_secondary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/edit_text_search"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/text_view_top_rated_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/top_rated_movies"
+                android:textColor="@color/normalTextColor"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/card_view_search_bar"
+                app:layout_constraintTop_toBottomOf="@id/card_view_search_bar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_movies"
+                android:layout_width="0dp"
+                android:layout_height="270dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_top_rated_title"
+                app:setList="@{viewModel.topRatedMovies}"
+                tools:listitem="@layout/item_movie" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_top_movies"
+                android:layout_width="@dimen/loading_animation_size"
+                android:layout_height="@dimen/loading_animation_size"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/recycler_view_movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/recycler_view_movies"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading_animation"
+                app:showOnLoading="@{viewModel.apiCallStatusOne}" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_top_movies_error"
+                android:layout_width="@dimen/loading_animation_size"
+                android:layout_height="@dimen/loading_animation_size"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/recycler_view_movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/recycler_view_movies"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/error_animation"
+                app:showOnError="@{viewModel.apiCallStatusOne}" />
+
+            <TextView
+                android:id="@+id/text_view_popular_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/popular_movies"
+                android:textColor="@color/normalTextColor"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/card_view_search_bar"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_movies" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_popular_movies"
+                android:layout_width="0dp"
+                android:layout_height="270dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_popular_title"
+                app:setList="@{viewModel.popularMovies}"
+                tools:listitem="@layout/item_movie" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_popular_movies"
+                android:layout_width="@dimen/loading_animation_size"
+                android:layout_height="@dimen/loading_animation_size"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/recycler_view_popular_movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/recycler_view_popular_movies"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading_animation"
+                app:showOnLoading="@{viewModel.apiCallStatusTwo}" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_popular_movies_error"
+                android:layout_width="@dimen/loading_animation_size"
+                android:layout_height="@dimen/loading_animation_size"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/recycler_view_popular_movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/recycler_view_popular_movies"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/error_animation"
+                app:showOnError="@{viewModel.apiCallStatusTwo}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
