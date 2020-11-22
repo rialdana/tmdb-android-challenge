@@ -15,6 +15,7 @@ import org.themobiedb.data.Result
 import org.themobiedb.data.repository.MoviesRepository
 import org.themobiedb.interactors.GetPopularMovies
 import org.themobiedb.interactors.GetTopRatedMovies
+import org.themobiedb.model.movies.Movie
 import org.themobiedb.model.movies.Movies
 import org.themoviedb.framework.utils.ApiCallStatus
 import org.themoviedb.ui.movies.MoviesViewModel
@@ -58,7 +59,7 @@ class MoviesViewModelTest : BaseViewModelTest() {
     @Test
     fun loadTopRatedMovies_returnSuccess() = runBlockingTest {
 
-        val movies = Movies(1, emptyList(), 1, 0)
+        val movies = emptyList<Movie>()
 
         Mockito.`when`(moviesRepository.fetchTopRatedMovies()).thenReturn(
             Result.Success(movies)
@@ -71,13 +72,8 @@ class MoviesViewModelTest : BaseViewModelTest() {
         MatcherAssert.assertThat(apiCallStatus, `is`(ApiCallStatus.SUCCESS))
 
         MatcherAssert.assertThat(
-            moviesViewModel.topRatedMovies.getOrAwaitValue().results,
-            `is`(movies.results)
-        )
-
-        MatcherAssert.assertThat(
-            moviesViewModel.topRatedMovies.getOrAwaitValue().page,
-            `is`(movies.page)
+            moviesViewModel.topRatedMovies.getOrAwaitValue(),
+            `is`(movies)
         )
     }
 
@@ -99,7 +95,7 @@ class MoviesViewModelTest : BaseViewModelTest() {
     @Test
     fun loadPopularMovies_returnSuccess() = runBlockingTest {
 
-        val movies = Movies(1, emptyList(), 1, 0)
+        val movies = emptyList<Movie>()
 
         Mockito.`when`(moviesRepository.fetchPopularMovies()).thenReturn(
             Result.Success(movies)
@@ -112,13 +108,8 @@ class MoviesViewModelTest : BaseViewModelTest() {
         MatcherAssert.assertThat(apiCallStatus, `is`(ApiCallStatus.SUCCESS))
 
         MatcherAssert.assertThat(
-            moviesViewModel.popularMovies.getOrAwaitValue().results,
-            `is`(movies.results)
-        )
-
-        MatcherAssert.assertThat(
-            moviesViewModel.popularMovies.getOrAwaitValue().page,
-            `is`(movies.page)
+            moviesViewModel.popularMovies.getOrAwaitValue(),
+            `is`(movies)
         )
     }
 
